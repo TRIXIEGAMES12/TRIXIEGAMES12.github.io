@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Zona de Juegos ✨</title>
+    <link href="fonts.googleapis.com" rel="stylesheet">
+    <style>
+        :root {
+            --main-pink: #ff66b2;
+            --hot-pink: #ff3399;
+            --glass: rgba(255, 255, 255, 0.6);
+        }
+
+        body {
+            background: linear-gradient(180deg, #ff9a9e 0%, #fecfef 40%, #ffc1e3 100%);
+            background-attachment: fixed;
+            font-family: 'Quicksand', sans-serif;
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            padding: 25px;
+            text-align: center;
+            border-bottom: 4px solid white;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 12px;
+            display: flex; justify-content: center; gap: 15px;
+        }
+
+        nav a {
+            text-decoration: none; color: var(--main-pink); font-weight: 700;
+            padding: 8px 20px; background: white; border-radius: 20px;
+        }
+
+        .games-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .game-box {
+            background: white;
+            border-radius: 20px;
+            padding: 15px;
+            text-align: center;
+            border: 2px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .game-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--hot-pink);
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: 150px;
+            background: #eee;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 3em;
+            color: var(--main-pink);
+        }
+
+        .btn-play {
+            background: var(--hot-pink);
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .message-box {
+            background: #fff0f7;
+            border: 2px dashed var(--main-pink);
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 600px;
+            text-align: center;
+            border-radius: 15px;
+            font-size: 0.9em;
+            color: #d63384;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 style="color: var(--hot-pink); margin:0;">✨ Zona de Juegos ✨</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="forum.html">Forum</a>
+        <a href="games.html">Games</a>
+        <a href="about.html">About Us</a>
+    </nav>
+
+    <div class="message-box">
+        <strong>Mensaje:</strong> ¡Explora nuestra selección de juegos!
+    </div>
+
+    <div class="games-container">
+        <!-- JUEGO 1 -->
+        <div class="game-box" onclick="alert('Este juego aún no está disponible.')">
+            <div class="thumbnail">🎮</div>
+            <h3>Aventura Mágica</h3>
+            <p style="font-size: 0.8em; color: #999;">Un viaje a través de tierras encantadas.</p>
+            <button class="btn-play">Jugar</button>
+        </div>
+
+        <!-- JUEGO 2 -->
+        <div class="game-box" onclick="alert('Este juego aún no está disponible.')">
+            <div class="thumbnail">🧩</div>
+            <h3>Puzle Brillante</h3>
+            <p style="font-size: 0.8em; color: #999;">Desafía tu mente con colores y formas.</p>
+            <button class="btn-play">Jugar</button>
+        </div>
+
+        <!-- JUEGO 3 -->
+        <div class="game-box" onclick="alert('Este juego aún no está disponible.')">
+            <div class="thumbnail">👗</div>
+            <h3>Vestir con Estilo</h3>
+            <p style="font-size: 0.8em; color: #999;">Crea el look perfecto para cada ocasión.</p>
+            <button class="btn-play">Jugar</button>
+        </div>
+
+        <!-- JUEGO 4 -->
+        <div class="game-box" onclick="alert('Este juego aún no está disponible.')">
+            <div class="thumbnail">🎶</div>
+            <h3>Ritmo Estelar</h3>
+            <p style="font-size: 0.8em; color: #999;">Sigue el compás y alcanza las estrellas.</p>
+            <button class="btn-play">Jugar</button>
+        </div>
+    </div>
+
+    <footer style="text-align: center; padding: 40px; color: var(--main-pink); font-size: 0.8em;">
+        © 2023 Tu Sitio Web
+    </footer>
+
+</body>
+</html>
