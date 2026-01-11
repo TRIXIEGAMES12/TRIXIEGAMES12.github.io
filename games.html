@@ -88,12 +88,39 @@
             color: white; padding: 5px 10px; font-weight: bold; display: flex; justify-content: space-between;
         }
 
-        /* ESTILO SUSTO I AM PERFECT */
-        .scary-text {
-            position: fixed; color: #ff0000; font-weight: 900;
-            font-family: 'Courier New', monospace; font-size: 30px;
-            z-index: 9999; pointer-events: none; text-shadow: 2px 2px #000;
-            text-transform: uppercase;
+        function triggerMeltdown() {
+            // Escondemos el botón para que parezca que el sitio se rompió
+            document.getElementById('done-btn').style.display = 'none';
+            
+            // Bucle para repetir el texto 100 veces
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const text = document.createElement('div');
+                    text.className = 'scary-text';
+                    text.innerText = 'I AM PERFECT NOW';
+                    
+                    // Posiciones aleatorias en toda la ventana
+                    text.style.left = Math.random() * (window.innerWidth - 250) + 'px';
+                    text.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+                    
+                    // Rotación aleatoria para que se vea más caótico
+                    const randomRotation = (Math.random() * 20) - 10;
+                    text.style.transform = `rotate(${randomRotation}deg)`;
+                    
+                    document.body.appendChild(text);
+                    
+                    // Sonido de error (se solapará creando un ruido molesto)
+                    let errorSound = new Audio('www.myinstants.com');
+                    errorSound.volume = 0.1; // Volumen bajo porque serán 100 sonidos
+                    errorSound.play();
+                    
+                }, i * 30); // Aparecen muy rápido (cada 30 milisegundos)
+            }
+            
+            // Aparece el link secreto después de que termine la lluvia de mensajes
+            setTimeout(() => { 
+                document.getElementById('secret-v').style.display = 'inline-block'; 
+            }, 3500);
         }
 
         footer { text-align: center; padding: 50px; color: var(--main-pink); font-size: 0.9em; }
@@ -196,10 +223,5 @@
     </script>
 </body>
 </html>
-Usa el código con precaución.
-
-Pega este código en games.html, haz Commit en GitHub y ¡listo!
-¿Quieres probarlo ya? Recuerda que para que el sonido de error funcione, el navegador te pedirá haber hecho un clic previo en la página. ¡Tu ARG ya está completo!
-
-
+press V
 
