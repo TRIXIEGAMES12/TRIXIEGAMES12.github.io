@@ -89,38 +89,45 @@
         }
 
         function triggerMeltdown() {
-            // Escondemos el botón para que parezca que el sitio se rompió
+            // 1. Escondemos el botón e iniciamos el caos
             document.getElementById('done-btn').style.display = 'none';
+            document.body.style.transition = "background 5s ease-in";
             
-            // Bucle para repetir el texto 100 veces
-            for (let i = 0; i < 100; i++) {
-                setTimeout(() => {
-                    const text = document.createElement('div');
-                    text.className = 'scary-text';
-                    text.innerText = 'I AM PERFECT NOW';
-                    
-                    // Posiciones aleatorias en toda la ventana
-                    text.style.left = Math.random() * (window.innerWidth - 250) + 'px';
-                    text.style.top = Math.random() * (window.innerHeight - 50) + 'px';
-                    
-                    // Rotación aleatoria para que se vea más caótico
-                    const randomRotation = (Math.random() * 20) - 10;
-                    text.style.transform = `rotate(${randomRotation}deg)`;
-                    
-                    document.body.appendChild(text);
-                    
-                    // Sonido de error (se solapará creando un ruido molesto)
-                    let errorSound = new Audio('www.myinstants.com');
-                    errorSound.volume = 0.1; // Volumen bajo porque serán 100 sonidos
-                    errorSound.play();
-                    
-                }, i * 30); // Aparecen muy rápido (cada 30 milisegundos)
-            }
-            
-            // Aparece el link secreto después de que termine la lluvia de mensajes
-            setTimeout(() => { 
-                document.getElementById('secret-v').style.display = 'inline-block'; 
-            }, 3500);
+            // 2. Bucle INFINITO de mensajes
+            let infiniteText = setInterval(() => {
+                const text = document.createElement('div');
+                text.className = 'scary-text';
+                text.innerText = 'I AM PERFECT NOW';
+                text.style.left = Math.random() * (window.innerWidth - 250) + 'px';
+                text.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+                text.style.transform = `rotate(${(Math.random() * 30) - 15}deg) scale(${1 + Math.random()})`;
+                document.body.appendChild(text);
+
+                // Sonido de error constante
+                let err = new Audio('www.myinstants.com');
+                err.volume = 0.05;
+                err.play();
+            }, 50); // Sale uno cada 50ms para siempre
+
+            // 3. Autodestrucción del código (Desvanecimiento)
+            setTimeout(() => {
+                document.querySelector('header').style.opacity = '0';
+                document.querySelector('nav').style.opacity = '0';
+                document.getElementById('game-screen').style.border = '10px solid red';
+            }, 2000);
+
+            setTimeout(() => {
+                document.body.style.background = "black";
+                document.getElementById('main-grid').style.display = "none";
+                document.getElementById('game-screen').style.opacity = '0';
+            }, 5000);
+
+            // 4. Ventana de Error Fatal y Redirección
+            setTimeout(() => {
+                clearInterval(infiniteText); // Detenemos el bucle antes de salir
+                alert("FATAL ERROR: GIRLYGAMES_CORE_ENTITY_OVERLOAD\n\nReason: Valentina has reached 100% synchronization.\n\nConnection terminated by remote host.");
+                window.location.href = "index.html";
+            }, 8000);
         }
 
         footer { text-align: center; padding: 50px; color: var(--main-pink); font-size: 0.9em; }
