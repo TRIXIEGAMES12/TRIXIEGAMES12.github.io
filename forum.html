@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🩷 GirlyGames Forum 🩷</title>
+    <!-- Fuente moderna Quicksand -->
     <link href="fonts.googleapis.com" rel="stylesheet">
     <style>
         :root {
@@ -13,18 +14,21 @@
         }
 
         body {
+            /* Fondo rosa Frutiger Aero */
             background: linear-gradient(180deg, #ff9a9e 0%, #fecfef 40%, #ffc1e3 100%);
             background-attachment: fixed;
             font-family: 'Quicksand', sans-serif;
             margin: 0; padding: 0;
+            color: #444;
         }
 
         header {
             background: rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(10px);
-            padding: 20px;
+            padding: 25px;
             text-align: center;
             border-bottom: 3px solid white;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.1);
         }
 
         nav {
@@ -39,14 +43,17 @@
             text-decoration: none;
             color: var(--main-pink);
             font-weight: 700;
-            padding: 8px 20px;
+            padding: 8px 25px;
             background: white;
             border-radius: 30px;
             box-shadow: 0 4px 0 #ffb6c1;
+            transition: 0.2s;
         }
 
+        nav a:hover { transform: translateY(2px); box-shadow: 0 2px 0 #ffb6c1; }
+
         .forum-container {
-            max-width: 800px;
+            max-width: 850px;
             margin: 40px auto;
             padding: 20px;
         }
@@ -54,28 +61,29 @@
         /* RECTÁNGULOS DEL FORO */
         .forum-post {
             background: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 15px;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 18px;
             border: 2px solid white;
             box-shadow: 0 8px 20px rgba(255, 105, 180, 0.1);
             display: flex;
             align-items: center;
             justify-content: space-between;
             cursor: pointer;
-            transition: 0.3s;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             color: #d63384;
             font-weight: 600;
         }
 
         .forum-post:hover {
-            transform: scale(1.02);
+            transform: scale(1.03);
             background: #fffafa;
+            border-color: var(--soft-pink);
         }
 
-        .post-info { font-size: 0.8em; color: #ffb6c1; }
+        .post-info { font-size: 0.85em; color: #ffb6c1; font-weight: 400; }
 
-        /* ESTILO VENTANA ERROR FLASH (Igual a la anterior) */
+        /* MODAL ERROR FLASH */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -87,28 +95,44 @@
 
         .error-window {
             background: #f0f0f0;
-            width: 400px;
+            width: 420px;
             border: 2px solid #0054e3;
-            font-family: 'Tahoma', sans-serif;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+            font-family: 'Tahoma', 'Segoe UI', sans-serif;
         }
 
         .error-header {
             background: linear-gradient(to right, #0054e3, #27c4f5);
-            color: white; padding: 5px 10px;
-            display: flex; justify-content: space-between; font-weight: bold;
+            color: white; padding: 6px 12px;
+            display: flex; justify-content: space-between; 
+            font-weight: bold; font-size: 13px;
         }
 
-        .error-body { padding: 20px; display: flex; gap: 15px; background: white; }
+        .error-body { 
+            padding: 25px; 
+            display: flex; 
+            gap: 15px; 
+            background: white; 
+            font-size: 13px;
+            line-height: 1.4;
+        }
 
-        .btn-system { background: #e1e1e1; border: 1px solid #777; padding: 5px 20px; cursor: pointer; }
+        .btn-system { 
+            background: #e1e1e1; 
+            border: 1px solid #777; 
+            padding: 5px 25px; 
+            cursor: pointer; 
+            box-shadow: inset -1px -1px #999;
+        }
 
-        footer { text-align: center; padding: 40px; color: var(--main-pink); font-size: 0.8em; }
+        footer { text-align: center; padding: 50px; color: var(--main-pink); font-size: 0.85em; }
     </style>
 </head>
 <body>
 
     <header>
-        <h1 style="color: var(--hot-pink); margin:0;">🩷 GirlyGames Forum 🩷</h1>
+        <h1 style="color: var(--hot-pink); margin:0; font-size: 2.5em;">🩷 GirlyGames Forum 🩷</h1>
+        <p style="color: var(--main-pink); margin-top: 5px;">Community & Secrets</p>
     </header>
 
     <nav>
@@ -119,7 +143,7 @@
     </nav>
 
     <div class="forum-container">
-        <h2 style="color: white; text-shadow: 2px 2px var(--main-pink); text-align: center;">Latest Discussions</h2>
+        <h2 style="color: white; text-shadow: 2px 2px var(--main-pink); text-align: center; margin-bottom: 30px;">Latest Discussions</h2>
 
         <!-- POSTS BLOQUEADOS POR FLASH -->
         <div class="forum-post" onclick="showFlashError()">
@@ -138,7 +162,7 @@
         </div>
 
         <!-- POST CLICKEABLE (PARA EL ARG) -->
-        <div class="forum-post" onclick="goToGlitch()" style="border-left: 5px solid #ff3399;">
+        <div class="forum-post" onclick="goToGlitch()" style="border-left: 6px solid var(--hot-pink); background: #fff9fb;">
             <span>❓ I have a glitch</span>
             <span class="post-info">Posted by: [USER_NOT_FOUND] • 0s ago</span>
         </div>
@@ -148,21 +172,25 @@
     <div class="modal-overlay" id="flash-modal">
         <div class="error-window">
             <div class="error-header">
-                <span>System Error</span>
+                <span>System Notification</span>
                 <span onclick="closeError()" style="cursor:pointer">×</span>
             </div>
             <div class="error-body">
-                <img src="cdn-icons-png.flaticon.com" width="40">
-                <p>Flash Video Media is required to view this thread content.</p>
+                <!-- Icono de error de sistema -->
+                <img src="cdn-icons-png.flaticon.com" width="45" height="45">
+                <div>
+                    <strong style="color: #cc0000;">Plugin Missing:</strong><br>
+                    Flash Video Media is required to view this thread content. Please update your player.
+                </div>
             </div>
-            <div class="error-footer" style="padding:10px; text-align:center; background:#f0f0f0;">
+            <div class="error-footer" style="padding:12px; text-align:center; background:#f0f0f0; border-top: 1px solid #ccc;">
                 <button class="btn-system" onclick="closeError()">OK</button>
             </div>
         </div>
     </div>
 
     <footer>
-        © 2008-2012 GirlyGames Community | Stay Sweet!
+        © 2008-2012 GirlyGames Community | <span style="opacity: 0.5;">Stay sweet forever.</span>
     </footer>
 
     <script>
@@ -173,9 +201,9 @@
             document.getElementById('flash-modal').style.display = 'none';
         }
         function goToGlitch() {
-            // Aquí puedes decidir si lo llevas a otra página o si pasa algo raro
-            alert("Redirecting to: [REDACTED]");
-            window.location.href = "glitch-post.html"; // Asegúrate de crear este archivo después
+            // Efecto visual antes de ir a la página (opcional)
+            alert("Redirecting to: [SESSION_RECOVERY_MODE]");
+            window.location.href = "glitch-post.html"; 
         }
     </script>
 
