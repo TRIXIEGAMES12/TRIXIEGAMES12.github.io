@@ -1,0 +1,207 @@
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚠️ 404 NOT FOUND - GirlyGames.com</title>
+    <link href="fonts.googleapis.com" rel="stylesheet">
+    
+    <style>
+        :root {
+            --main-pink: #ff66b2;
+            --soft-pink: #fecfef;
+            --hot-pink: #ff3399;
+            --glass: rgba(255, 255, 255, 0.45);
+        }
+
+        body {
+            background: linear-gradient(180deg, #ff9a9e 0%, #fecfef 40%, #ffc1e3 100%);
+            background-attachment: fixed;
+            font-family: 'Quicksand', sans-serif;
+            margin: 0; padding: 0; color: #444;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            padding: 30px;
+            text-align: center;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.6);
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.25);
+            padding: 15px;
+            display: flex; justify-content: center; gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none; color: var(--main-pink); font-weight: 600;
+            padding: 8px 20px; background: white; border-radius: 30px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 60px auto;
+            text-align: center;
+        }
+
+        .error-card {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 25px;
+            padding: 50px;
+            border: 3px dashed var(--hot-pink);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .error-code {
+            font-size: 5em;
+            font-weight: 700;
+            color: var(--hot-pink);
+            margin: 0;
+            line-height: 1;
+        }
+
+        .refresh-btn {
+            margin-top: 30px;
+            background: var(--hot-pink);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-family: 'Quicksand', sans-serif;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 51, 153, 0.3);
+            transition: 0.3s;
+        }
+
+        .refresh-btn:hover { transform: scale(1.05); background: #e62e8a; }
+
+        /* MODAL RETRO WINDOWS XP */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 1000;
+            align-items: center; justify-content: center;
+        }
+
+        .retro-window {
+            background: #ece9d8;
+            width: 450px;
+            border: 2px solid #0054e3;
+            box-shadow: 5px 5px 0 rgba(0,0,0,0.2);
+        }
+
+        .retro-header {
+            background: linear-gradient(to right, #0054e3 0%, #27c4f5 100%);
+            color: white;
+            padding: 3px 8px;
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Tahoma', sans-serif;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .retro-body {
+            padding: 20px;
+            background: white;
+            margin: 5px;
+            border: 1px solid #7f9db9;
+            font-family: 'Tahoma', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            max-height: 250px;
+            overflow-y: auto;
+            color: #000;
+        }
+
+        .close-icon {
+            cursor: pointer;
+            background: #e62e8a;
+            border: 1px solid white;
+            padding: 0 4px;
+            font-size: 11px;
+            line-height: 1;
+        }
+
+        footer { text-align: center; padding: 40px; color: var(--main-pink); font-size: 0.85em; }
+    </style>
+</head>
+<body>
+
+    <!-- SONIDO DE ERROR (Windows Background) -->
+    <audio id="error-sound" src="www.myinstants.com"></audio>
+
+    <header>
+        <h1 style="color: var(--hot-pink); margin:0;">🩷 GirlyGames.com 🩷</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="forum.html">Forum</a>
+        <a href="games.html">Games</a>
+        <a href="about.html">About Us</a>
+    </nav>
+
+    <div class="container">
+        <div class="error-card">
+            <p class="error-code">404</p>
+            <h2 style="color: var(--main-pink);">Your history was not found</h2>
+            <p style="color: #777;">The system could not retrieve the post data. User ID: <strong>UNKNOWN</strong></p>
+            
+            <button class="refresh-btn" onclick="playAndShow()">Refresh Session</button>
+        </div>
+    </div>
+
+    <!-- POPUP RETRO -->
+    <div class="modal-overlay" id="retro-modal">
+        <div class="retro-window">
+            <div class="retro-header">
+                <span>Recovered_Thread_Log.txt</span>
+                <span class="close-icon" onclick="closeRetroPopup()">X</span>
+            </div>
+            <div class="retro-body">
+                <p><strong>RECOVERED FRAGMENT #209:</strong></p>
+                
+                <p>I finally found it. The "glitch" they all talk about in the forums... it's not a bug. It's a door.</p>
+                
+                <p>I tried to refresh the page but the colors started to melt. I can hear the sparkles whispering my real name. If you are reading this, don't press refresh again.</p>
+                
+                <p><em>[SYSTEM_OVERFLOW_DETECTED]</em></p>
+                <!-- RELLENA AQUÍ TU HISTORIA -->
+            </div>
+            <div style="background: #ece9d8; padding: 10px; text-align: center;">
+                <button onclick="closeRetroPopup()" style="padding: 2px 20px; font-family: Tahoma; cursor: pointer; border: 1px solid #777;">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        © 2008 GirlyGames Interactive | <span style="opacity:0.3;">We found you.</span>
+    </footer>
+
+    <script>
+        function playAndShow() {
+            // Reproduce el sonido de error
+            var sound = document.getElementById("error-sound");
+            sound.play();
+            
+            // Muestra el modal después de un pequeño retraso
+            setTimeout(function() {
+                document.getElementById('retro-modal').style.display = 'flex';
+            }, 100);
+        }
+
+        function closeRetroPopup() {
+            document.getElementById('retro-modal').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
