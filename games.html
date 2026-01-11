@@ -5,194 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>✨ Games Library - GirlyGames.com ✨</title>
     <link href="fonts.googleapis.com" rel="stylesheet">
-    <style>
-        :root {
-            --main-pink: #ff66b2;
-            --hot-pink: #ff3399;
-            --glass: rgba(255, 255, 255, 0.65);
-        }
-
-        body {
-            background: linear-gradient(180deg, #ff9a9e 0%, #fecfef 40%, #ffc1e3 100%);
-            background-attachment: fixed;
-            font-family: 'Quicksand', sans-serif;
-            margin: 0; padding: 0; color: #444;
-            overflow-x: hidden;
-        }
-
-        header {
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            padding: 30px;
-            text-align: center;
-            border-bottom: 4px solid white;
-            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.15);
-        }
-
-        nav {
-            background: rgba(255, 255, 255, 0.3);
-            padding: 15px;
-            display: flex; justify-content: center; gap: 20px;
-        }
-
-        nav a {
-            text-decoration: none; color: var(--main-pink); font-weight: 700;
-            padding: 10px 25px; background: white; border-radius: 30px;
-            box-shadow: 0 4px 0 #ffb6c1; transition: 0.2s;
-        }
-
-        .games-grid {
-            max-width: 1000px;
-            margin: 50px auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 30px;
-            padding: 20px;
-        }
-
-        .game-card {
-            background: white; border-radius: 25px; padding: 20px;
-            text-align: center; border: 2px solid white;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            transition: 0.3s; cursor: pointer;
-        }
-
-        .game-card:hover { transform: translateY(-10px); border-color: var(--hot-pink); }
-
-        .thumb {
-            width: 100%; height: 160px;
-            background: linear-gradient(135deg, #fff0f7 0%, #ffe4f2 100%);
-            border-radius: 15px; margin-bottom: 15px;
-            display: flex; align-items: center; justify-content: center; font-size: 4em;
-        }
-
-        .play-btn {
-            background: var(--hot-pink); color: white; border: none;
-            padding: 8px 25px; border-radius: 50px; font-weight: 700;
-            cursor: pointer; font-family: 'Quicksand', sans-serif;
-        }
-
-        /* MODAL ERROR FLASH */
-        .modal-overlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;
-        }
-
-        .error-box {
-            background: #f0f0f0; width: 400px; border: 2px solid #0054e3;
-            font-family: 'Tahoma', sans-serif; box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
-        }
-
-        .error-header {
-            background: linear-gradient(to right, #0054e3, #27c4f5);
-            color: white; padding: 5px 10px; font-weight: bold; display: flex; justify-content: space-between;
-        }
-
-        function triggerMeltdown() {
-            // 1. Escondemos el botón e iniciamos el caos
-            document.getElementById('done-btn').style.display = 'none';
-            document.body.style.transition = "background 5s ease-in";
-            
-            // 2. Bucle INFINITO de mensajes
-            let infiniteText = setInterval(() => {
-                const text = document.createElement('div');
-                text.className = 'scary-text';
-                text.innerText = 'I AM PERFECT NOW';
-                text.style.left = Math.random() * (window.innerWidth - 250) + 'px';
-                text.style.top = Math.random() * (window.innerHeight - 50) + 'px';
-                text.style.transform = `rotate(${(Math.random() * 30) - 15}deg) scale(${1 + Math.random()})`;
-                document.body.appendChild(text);
-
-                // Sonido de error constante
-                let err = new Audio('www.myinstants.com');
-                err.volume = 0.05;
-                err.play();
-            }, 50); // Sale uno cada 50ms para siempre
-
-            // 3. Autodestrucción del código (Desvanecimiento)
-            setTimeout(() => {
-                document.querySelector('header').style.opacity = '0';
-                document.querySelector('nav').style.opacity = '0';
-                document.getElementById('game-screen').style.border = '10px solid red';
-            }, 2000);
-
-            setTimeout(() => {
-                document.body.style.background = "black";
-                document.getElementById('main-grid').style.display = "none";
-                document.getElementById('game-screen').style.opacity = '0';
-            }, 5000);
-
-            // 4. Ventana de Error Fatal y Redirección
-            setTimeout(() => {
-                clearInterval(infiniteText); // Detenemos el bucle antes de salir
-                alert("FATAL ERROR: GIRLYGAMES_CORE_ENTITY_OVERLOAD\n\nReason: Valentina has reached 100% synchronization.\n\nConnection terminated by remote host.");
-                window.location.href = "index.html";
-            }, 8000);
-        }
-
-        footer { text-align: center; padding: 50px; color: var(--main-pink); font-size: 0.9em; }
+    <style id="main-styles">
+        :root { --main-pink: #ff66b2; --hot-pink: #ff3399; --glass: rgba(255, 255, 255, 0.65); }
+        body { background: linear-gradient(180deg, #ff9a9e 0%, #fecfef 40%, #ffc1e3 100%); background-attachment: fixed; font-family: 'Quicksand', sans-serif; margin: 0; padding: 0; color: #444; overflow-x: hidden; }
+        header { background: var(--glass); backdrop-filter: blur(15px); padding: 30px; text-align: center; border-bottom: 4px solid white; box-shadow: 0 5px 15px rgba(255, 105, 180, 0.15); }
+        nav { background: rgba(255, 255, 255, 0.3); padding: 15px; display: flex; justify-content: center; gap: 20px; }
+        nav a { text-decoration: none; color: var(--main-pink); font-weight: 700; padding: 10px 25px; background: white; border-radius: 30px; box-shadow: 0 4px 0 #ffb6c1; transition: 0.2s; }
+        .games-grid { max-width: 1000px; margin: 50px auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 30px; padding: 20px; }
+        .game-card { background: white; border-radius: 25px; padding: 20px; text-align: center; border: 2px solid white; box-shadow: 0 10px 25px rgba(0,0,0,0.05); cursor: pointer; }
+        .play-btn { background: var(--hot-pink); color: white; border: none; padding: 8px 25px; border-radius: 50px; font-weight: 700; cursor: pointer; }
+        
+        /* ESTILO DEL TEXTO ROJO */
+        .scary-text { position: fixed; color: #ff0000; font-weight: 900; font-family: serif; font-size: 40px; z-index: 9999; pointer-events: none; text-transform: uppercase; line-height: 0.8; }
+        
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; }
+        .error-box { background: #f0f0f0; width: 400px; border: 2px solid #0054e3; font-family: sans-serif; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>✨ Games Library ✨</h1>
-    </header>
+    <div id="all-content">
+        <header><h1>✨ Games Library ✨</h1></header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="forum.html">Forum</a>
+            <a href="games.html">Games</a>
+            <a href="about.html">About Us</a>
+        </nav>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="forum.html">Forum</a>
-        <a href="games.html">Games</a>
-        <a href="about.html">About Us</a>
-    </nav>
-
-    <!-- PANTALLA DEL JUEGO (SCRATCH) -->
-    <div id="game-screen" style="display:none; text-align: center; margin: 30px auto; padding: 20px; background: white; border-radius: 30px; border: 4px solid #ff66b2; max-width: 550px;">
-        <h3 style="color: #ff3399;">🎀 Playing: Star Dress Up 🎀</h3>
-        <iframe src="https://scratch.mit.edu/projects/1264061632/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-        <br>
-        <button id="done-btn" onclick="triggerMeltdown()" style="margin-top: 15px; background: #4CAF50; color: white; border: none; padding: 12px 30px; border-radius: 50px; cursor: pointer; font-weight: bold;">DONE! ✨</button>
-        <br>
-        <a href="mystery.html" id="secret-v" style="display:none; color: rgba(255,0,0,0.3); font-family: monospace; font-size: 11px; margin-top: 15px; text-decoration: none;">PRESS v or CLICK HERE</a>
-    </div>
-
-    <!-- GRID DE JUEGOS -->
-    <div class="games-grid" id="main-grid">
-        <div class="game-card" onclick="openScratch()">
-            <div class="thumb">💖</div>
-            <h3>Star Dress Up</h3>
-            <button class="play-btn">Play Now</button>
-        </div>
-        <div class="game-card" onclick="triggerFlashError()">
-            <div class="thumb">💋</div>
-            <h3>Beauty Makeup</h3>
-            <button class="play-btn">Play Now</button>
-        </div>
-        <div class="game-card" onclick="triggerFlashError()">
-            <div class="thumb">✂️</div>
-            <h3>Pinky Salon</h3>
-            <button class="play-btn">Play Now</button>
-        </div>
-        <div class="game-card" onclick="alert('ERROR: FILE_CORRUPTED_BY_USER_TRIXIE')">
-            <div class="thumb">❓</div>
-            <h3>Coming Soon...</h3>
-            <button class="play-btn" style="background: #ccc;">Locked</button>
-        </div>
-    </div>
-
-    <!-- MODAL ERROR FLASH -->
-    <div class="modal-overlay" id="modal">
-        <div class="error-box">
-            <div class="error-header"><span>Plugin Error</span><span style="cursor:pointer" onclick="closeModal()">×</span></div>
-            <div style="padding:25px; background:white; display:flex; gap:15px; font-size:13px;">
-                <img src="cdn-icons-png.flaticon.com" width="40">
-                <div><strong>Action Blocked:</strong><br>Flash Player is no longer supported.</div>
+        <div id="game-screen" style="display:none; text-align: center; margin: 30px auto; padding: 20px; background: white; border-radius: 30px; border: 4px solid #ff66b2; max-width: 550px;">
+            <h3>🎀 Playing: Star Dress Up 🎀</h3>
+            <div id="scratch-container">
+                <iframe src="https://scratch.mit.edu/projects/1264061632/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
             </div>
-            <div style="background:#f0f0f0; padding:10px; text-align:center;"><button onclick="closeModal()">OK</button></div>
+            <br>
+            <button id="done-btn" onclick="triggerMeltdown()" style="margin-top: 15px; background: #4CAF50; color: white; border: none; padding: 12px 30px; border-radius: 50px; cursor: pointer; font-weight: bold;">DONE! ✨</button>
+        </div>
+
+        <div class="games-grid" id="main-grid">
+            <div class="game-card" onclick="openScratch()"><h3>Star Dress Up</h3><button class="play-btn">Play</button></div>
+            <div class="game-card" onclick="triggerError()"><h3>Beauty Makeup</h3><button class="play-btn">Play</button></div>
+            <div class="game-card" onclick="triggerError()"><h3>Pinky Salon</h3><button class="play-btn">Play</button></div>
+            <div class="game-card" onclick="alert('ERROR: FILE_CORRUPTED')"><h3>Soon...</h3><button class="play-btn">Locked</button></div>
         </div>
     </div>
 
-    <footer>© 2008-2012 GirlyGames Interactive.</footer>
+    <div class="modal-overlay" id="modal">
+        <div class="error-box"><div style="background:#0054e3;color:white;padding:5px">Error</div><div style="padding:20px;background:white">Plugin Error.</div><button onclick="document.getElementById('modal').style.display='none'">OK</button></div>
+    </div>
 
     <script>
         function openScratch() {
@@ -200,35 +60,46 @@
             document.getElementById('game-screen').style.display = 'block';
         }
 
-        function triggerFlashError() {
-            document.getElementById('modal').style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
+        function triggerError() { document.getElementById('modal').style.display = 'flex'; }
 
         function triggerMeltdown() {
-            document.getElementById('done-btn').style.display = 'none';
-            for (let i = 0; i < 20; i++) {
-                setTimeout(() => {
-                    const text = document.createElement('div');
-                    text.className = 'scary-text';
-                    text.innerText = 'I AM PERFECT NOW';
-                    text.style.left = Math.random() * (window.innerWidth - 250) + 'px';
-                    text.style.top = Math.random() * (window.innerHeight - 50) + 'px';
-                    document.body.appendChild(text);
-                    new Audio('www.myinstants.com').play();
-                }, i * 150);
-            }
-            setTimeout(() => { document.getElementById('secret-v').style.display = 'inline-block'; }, 3000);
-        }
+            // 1. Eliminar botón y empezar bucle infinito de ruido y texto
+            document.getElementById('done-btn').remove();
+            
+            let meltdownInterval = setInterval(() => {
+                const text = document.createElement('div');
+                text.className = 'scary-text';
+                text.innerText = 'I AM PERFECT NOW';
+                text.style.left = Math.random() * window.innerWidth + 'px';
+                text.style.top = Math.random() * window.innerHeight + 'px';
+                // Sin fuentes bonitas, solo texto crudo amontonado
+                text.style.fontSize = Math.random() * 80 + 'px';
+                document.body.appendChild(text);
 
-        document.addEventListener('keydown', function(e) {
-            if (e.key.toLowerCase() === 'v') window.location.href = "mystery.html";
-        });
+                let audio = new Audio('www.myinstants.com');
+                audio.volume = 0.05;
+                audio.play();
+            }, 40);
+
+            // 2. Autodestrucción del CSS y del Juego
+            setTimeout(() => {
+                document.getElementById('scratch-container').innerHTML = "<h1 style='color:red'>CONNECTION LOST</h1>";
+                document.getElementById('main-styles').remove(); // ELIMINA TODO EL DISEÑO ROSA
+                document.body.style.backgroundColor = "white"; // Vuelve todo blanco y crudo
+            }, 3000);
+
+            // 3. Borrado total de la interfaz
+            setTimeout(() => {
+                document.getElementById('all-content').innerHTML = ""; 
+            }, 6000);
+
+            // 4. Mensaje Final de Expulsión
+            setTimeout(() => {
+                clearInterval(meltdownInterval);
+                alert("FATAL ERROR: file_trixie.sys has been deleted.\n\nMemory corrupted.\n\nClosing session...");
+                window.location.href = "index.html";
+            }, 9000);
+        }
     </script>
 </body>
 </html>
-press V
-
