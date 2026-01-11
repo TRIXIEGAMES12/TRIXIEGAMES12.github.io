@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us 🩷 GirlyGames.com</title>
+    <!-- Fuente moderna Quicksand -->
     <link href="fonts.googleapis.com" rel="stylesheet">
     <style>
         :root {
             --main-pink: #ff66b2;
             --hot-pink: #ff3399;
             --glass: rgba(255, 255, 255, 0.55);
+            --aero-blue: #e0f7fa;
         }
 
         body {
@@ -88,6 +90,27 @@
             font-weight: 700;
         }
 
+        /* BOTÓN DE REDES SOCIALES */
+        .social-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 35px;
+            background: linear-gradient(to right, #81d4fa, #b2ebf2);
+            color: #0277bd;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            border: 2px solid white;
+            box-shadow: 0 4px 15px rgba(129, 212, 250, 0.4);
+            transition: 0.3s;
+        }
+
+        .social-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(129, 212, 250, 0.6);
+            background: white;
+        }
+
         footer { text-align: center; padding: 40px; color: var(--main-pink); font-size: 0.8em; }
     </style>
 </head>
@@ -123,6 +146,9 @@
                 <p>
                     Her mission is simple: to keep the <span class="highlight">Y2K spirit</span> alive and ensure that the fun never ends. From the Andes to the internet, Valentina's dream is now your reality!
                 </p>
+
+                <!-- BOTÓN A REDES SOCIALES -->
+                <a href="social.html" class="social-btn">🌐 Visit Valentina's Social Space</a>
                 
                 <hr style="border: 0; border-top: 1px dashed var(--soft-pink); margin: 30px 0;">
                 
